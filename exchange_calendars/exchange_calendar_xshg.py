@@ -624,4 +624,4 @@ class XSHGExchangeCalendar(PrecomputedExchangeCalendar):
 
     @classmethod
     def bound_min(cls) -> pd.Timestamp:
-        return pd.Timestamp("1990-12-03")
+        return pd.Timestamp("1999-11-10")

@@ -56,7 +56,7 @@ if TYPE_CHECKING:
     from pandas._libs.tslibs.nattype import NaTType
 
 
-GLOBAL_DEFAULT_START = pd.Timestamp.now().floor("D") - pd.DateOffset(years=20)
+GLOBAL_DEFAULT_START = pd.Timestamp.now().floor("D") - pd.DateOffset(years=40)
 # Give an aggressive buffer for logic that needs to use the next trading
 # day or minute.
 GLOBAL_DEFAULT_END = pd.Timestamp.now().floor("D") + pd.DateOffset(years=1)
