@@ -1,6 +1,6 @@
 # exchange_calendars
 
-[![PyPI](https://img.shields.io/pypi/v/exchange-calendars)](https://pypi.org/project/exchange-calendars/) ![Python Support](https://img.shields.io/pypi/pyversions/exchange_calendars) ![PyPI Downloads](https://img.shields.io/pypi/dd/exchange-calendars) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![PyPI](https://img.shields.io/pypi/v/exchange-calendars)](https://pypi.org/project/exchange-calendars/) ![Python Support](https://img.shields.io/pypi/pyversions/exchange_calendars) ![PyPI Downloads](https://img.shields.io/pypi/dd/exchange-calendars) [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-D7FF64.svg)](https://github.com/astral-sh/ruff) [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/gerrymanoim/exchange_calendars/master.svg)](https://results.pre-commit.ci/latest/github/gerrymanoim/exchange_calendars/master)
 
 A Python library for defining and querying calendars for security exchanges.
 
@@ -258,11 +258,21 @@ See the [minutes tutorial](docs/tutorials/minutes.ipynb) for a detailed explanat
 | Hamburg Stock Exchange          | XHAM     | Germany        | 4.5.5         | https://www.boerse-hamburg.de                                |
 | Duesseldorf Stock Exchange      | XDUS     | Germany        | 4.5.5         | https://www.boerse-duesseldorf.de                            |
 | Luxembourg Stock Exchange       | XLUX     | Luxembourg     | 4.8           | https://www.luxse.com/                                       |
+| Tallinn Stock Exchange          | XTAL     | Estonia        | 4.11          | https://nasdaqbaltic.com                                     |
+| Riga Stock Exchange             | XRIS     | Latvia         | 4.11          | https://nasdaqbaltic.com                                     |
+| Vilnius Stock Exchange          | XLIT     | Lithuania      | 4.11          | https://nasdaqbaltic.com                                     |
+| Cyprus Stock Exchange           | XCYS     | Cyprus         | 4.11.1        | https://www.cse.com.cy/en-GB/home                            |
+| Bermuda Stock Exchange          | XBDA     | Bermuda        | 4.11.1        | https://www.bsx.com                                          |
+| Zagreb Stock Exchange           | XZAG     | Croatia        | 4.11.1        | https://www.zse.hr/en                                        |
+| Ljubljana Stock Exchange        | XLJU     | Slovenia       | 4.11.3        | https://ljse.si/en                                           |
+| Bratislava Stock Exchange       | XBRA     | Slovakia       | 4.11.3        | https://www.bsse.sk/bcpb/en                                  |
+| Belgrade Stock Exchange         | XBEL     | Serbia         | 4.11.3        | https://www.belex.rs/eng                                     |
+
 
 > Note that exchange calendars are defined by their [ISO-10383](https://www.iso20022.org/10383/iso-10383-market-identifier-codes) market identifier code.
 
-## [`market-prices`](https://github.com/maread99/market_prices)
-Much of the post v3 development of `exchange_calendars` has been driven by the [`market_prices`](https://github.com/maread99/market_prices) library. Check it out if you like the idea of using `exchange_calendars` to create meaningful OHLCV datasets. It works out-the-box with freely available data!
+## market-prices
+Much of the post v3 development of `exchange_calendars` was driven by the [`market_prices`](https://github.com/maread99/market_prices) library. Check it out if you like the idea of using `exchange_calendars` to create meaningful OHLCV datasets. It works out-the-box with freely available data!
 
 ## Deprecations and Renaming
 

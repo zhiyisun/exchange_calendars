@@ -2,15 +2,20 @@ from datetime import time
 from zoneinfo import ZoneInfo
 
 import pandas as pd
+import functools
+
+from pandas.tseries.offsets import CustomBusinessDay
 
 from .precomputed_exchange_calendar import PrecomputedExchangeCalendar
+from .pandas_extensions.offsets import MultipleWeekmaskCustomBusinessDay
 
 """
 References for precomputed BSE/NSE holidays:
     NSE: https://www.nseindia.com/products-services/equity-market-timings-holidays
     BSE: https://www.bseindia.com/static/markets/marketinfo/listholi.aspx
     Zerodha: https://zerodha.com/z-connect/category/traders-zone/holidays
-Although NSE/BSE provides only current year's dates, Zerodha provides holidays since 2013.
+Although NSE/BSE provides only current year's dates, Zerodha provides
+holidays since 2013.
 """
 
 precomputed_bse_holidays = pd.to_datetime(
@@ -418,6 +423,7 @@ precomputed_bse_holidays = pd.to_datetime(
         "2023-11-14",
         "2023-11-27",
         "2023-12-25",
+        "2024-01-22",  # Ram Mandir inauguration holiday
         "2024-01-26",
         "2024-03-08",
         "2024-03-25",
@@ -432,6 +438,7 @@ precomputed_bse_holidays = pd.to_datetime(
         "2024-10-02",
         "2024-11-01",
         "2024-11-15",
+        "2024-11-20",  # Maharashtra Assembly Elections
         "2024-12-25",
         "2025-02-26",
         "2025-03-14",
@@ -447,6 +454,21 @@ precomputed_bse_holidays = pd.to_datetime(
         "2025-10-22",
         "2025-11-05",
         "2025-12-25",
+        "2026-01-26",
+        "2026-03-03",
+        "2026-03-26",
+        "2026-03-31",
+        "2026-04-03",
+        "2026-04-14",
+        "2026-05-01",
+        "2026-05-28",
+        "2026-06-26",
+        "2026-09-14",
+        "2026-10-02",
+        "2026-10-20",
+        "2026-11-10",
+        "2026-11-24",
+        "2026-12-25",
     ]
 )
 
@@ -459,7 +481,7 @@ class XBOMExchangeCalendar(PrecomputedExchangeCalendar):
     Close Time: 3:30 PM, Asia/Kolkata
 
     Due to the complexity around the BSE holidays, we are hardcoding a list
-    of holidays back to 1997, and forward through 2023.  There are no known
+    of holidays back to 1997, and forward through 2025. There are no known
     early closes or late opens.
     """
 
@@ -471,3 +493,35 @@ class XBOMExchangeCalendar(PrecomputedExchangeCalendar):
     @classmethod
     def precomputed_holidays(cls):
         return precomputed_bse_holidays
+
+    @property
+    def special_weekmasks(self):
+        """
+        Returns
+        -------
+        list: List of (date, date, str) tuples that represent special
+         weekmasks that applies between dates.
+        """
+        return [
+            # Special trading session on Saturday, January 20, 2024.
+            # https://www.bseindia.com/downloads/SPDJ_ANN/MediaReleasePDF/1470003_mediareleasespecialtradingsessionfors&pbseindices20240105.pdf
+            (pd.Timestamp("2024-01-15"), pd.Timestamp("2024-01-21"), "1111110"),
+            # Special trading session on Saturday, February 1, 2025
+            # https://www.angelone.in/news/will-bse-and-nse-be-open-on-budget-day-feb-1
+            (pd.Timestamp("2025-01-27"), pd.Timestamp("2025-02-02"), "1111110"),
+        ]
+
+    @functools.cached_property
+    def day(self):
+        if self.special_weekmasks:
+            return MultipleWeekmaskCustomBusinessDay(
+                holidays=self.adhoc_holidays,
+                calendar=self.regular_holidays,
+                weekmask=self.weekmask,
+                weekmasks=self.special_weekmasks,
+            )
+        return CustomBusinessDay(
+            holidays=self.adhoc_holidays,
+            calendar=self.regular_holidays,
+            weekmask=self.weekmask,
+        )

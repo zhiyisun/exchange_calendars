@@ -7,10 +7,13 @@ from .exchange_calendar import ExchangeCalendar
 from .exchange_calendar_aixk import AIXKExchangeCalendar
 from .exchange_calendar_asex import ASEXExchangeCalendar
 from .exchange_calendar_bvmf import BVMFExchangeCalendar
+from .exchange_calendar_xcys import XCYSExchangeCalendar
 from .exchange_calendar_cmes import CMESExchangeCalendar
 from .exchange_calendar_iepa import IEPAExchangeCalendar
 from .exchange_calendar_xams import XAMSExchangeCalendar
 from .exchange_calendar_xasx import XASXExchangeCalendar
+from .exchange_calendar_xbel import XBELExchangeCalendar
+from .exchange_calendar_xbda import XBDAExchangeCalendar
 from .exchange_calendar_xbkk import XBKKExchangeCalendar
 from .exchange_calendar_xbog import XBOGExchangeCalendar
 from .exchange_calendar_xbom import XBOMExchangeCalendar
@@ -18,6 +21,7 @@ from .exchange_calendar_xbru import XBRUExchangeCalendar
 from .exchange_calendar_xbse import XBSEExchangeCalendar
 from .exchange_calendar_xbud import XBUDExchangeCalendar
 from .exchange_calendar_xbue import XBUEExchangeCalendar
+from .exchange_calendar_xbra import XBRAExchangeCalendar
 from .exchange_calendar_xcbf import XCBFExchangeCalendar
 from .exchange_calendar_xcse import XCSEExchangeCalendar
 from .exchange_calendar_xdub import XDUBExchangeCalendar
@@ -37,6 +41,8 @@ from .exchange_calendar_xkls import XKLSExchangeCalendar
 from .exchange_calendar_xkrx import XKRXExchangeCalendar
 from .exchange_calendar_xlim import XLIMExchangeCalendar
 from .exchange_calendar_xlis import XLISExchangeCalendar
+from .exchange_calendar_xlit import XLITExchangeCalendar
+from .exchange_calendar_xlju import XLJUExchangeCalendar
 from .exchange_calendar_xlon import XLONExchangeCalendar
 from .exchange_calendar_xlux import XLUXExchangeCalendar
 from .exchange_calendar_xmad import XMADExchangeCalendar
@@ -49,6 +55,7 @@ from .exchange_calendar_xosl import XOSLExchangeCalendar
 from .exchange_calendar_xpar import XPARExchangeCalendar
 from .exchange_calendar_xphs import XPHSExchangeCalendar
 from .exchange_calendar_xpra import XPRAExchangeCalendar
+from .exchange_calendar_xris import XRISExchangeCalendar
 from .exchange_calendar_xsau import XSAUExchangeCalendar
 from .exchange_calendar_xses import XSESExchangeCalendar
 from .exchange_calendar_xsgo import XSGOExchangeCalendar
@@ -57,10 +64,12 @@ from .exchange_calendar_xsto import XSTOExchangeCalendar
 from .exchange_calendar_xswx import XSWXExchangeCalendar
 from .exchange_calendar_xtae import XTAEExchangeCalendar
 from .exchange_calendar_xtai import XTAIExchangeCalendar
+from .exchange_calendar_xtal import XTALExchangeCalendar
 from .exchange_calendar_xtks import XTKSExchangeCalendar
 from .exchange_calendar_xtse import XTSEExchangeCalendar
 from .exchange_calendar_xwar import XWARExchangeCalendar
 from .exchange_calendar_xwbo import XWBOExchangeCalendar
+from .exchange_calendar_xzag import XZAGExchangeCalendar
 from .us_futures_calendar import QuantopianUSFuturesCalendar
 from .weekday_calendar import WeekdayCalendar
 
@@ -69,10 +78,13 @@ _default_calendar_factories = {
     "AIXK": AIXKExchangeCalendar,
     "ASEX": ASEXExchangeCalendar,
     "BVMF": BVMFExchangeCalendar,
+    "XCYS": XCYSExchangeCalendar,
     "CMES": CMESExchangeCalendar,
     "IEPA": IEPAExchangeCalendar,
     "XAMS": XAMSExchangeCalendar,
     "XASX": XASXExchangeCalendar,
+    "XBEL": XBELExchangeCalendar,
+    "XBDA": XBDAExchangeCalendar,
     "XBKK": XBKKExchangeCalendar,
     "XBOG": XBOGExchangeCalendar,
     "XBOM": XBOMExchangeCalendar,
@@ -80,6 +92,7 @@ _default_calendar_factories = {
     "XBSE": XBSEExchangeCalendar,
     "XBUD": XBUDExchangeCalendar,
     "XBUE": XBUEExchangeCalendar,
+    "XBRA": XBRAExchangeCalendar,
     "XCBF": XCBFExchangeCalendar,
     "XCSE": XCSEExchangeCalendar,
     "XDUB": XDUBExchangeCalendar,
@@ -99,6 +112,8 @@ _default_calendar_factories = {
     "XKRX": XKRXExchangeCalendar,
     "XLIM": XLIMExchangeCalendar,
     "XLIS": XLISExchangeCalendar,
+    "XLIT": XLITExchangeCalendar,
+    "XLJU": XLJUExchangeCalendar,
     "XLON": XLONExchangeCalendar,
     "XLUX": XLUXExchangeCalendar,
     "XMAD": XMADExchangeCalendar,
@@ -111,6 +126,7 @@ _default_calendar_factories = {
     "XPAR": XPARExchangeCalendar,
     "XPHS": XPHSExchangeCalendar,
     "XPRA": XPRAExchangeCalendar,
+    "XRIS": XRISExchangeCalendar,
     "XSAU": XSAUExchangeCalendar,
     "XSES": XSESExchangeCalendar,
     "XSGO": XSGOExchangeCalendar,
@@ -119,10 +135,12 @@ _default_calendar_factories = {
     "XSWX": XSWXExchangeCalendar,
     "XTAE": XTAEExchangeCalendar,
     "XTAI": XTAIExchangeCalendar,
+    "XTAL": XTALExchangeCalendar,
     "XTKS": XTKSExchangeCalendar,
     "XTSE": XTSEExchangeCalendar,
     "XWAR": XWARExchangeCalendar,
     "XWBO": XWBOExchangeCalendar,
+    "XZAG": XZAGExchangeCalendar,
     # Miscellaneous calendars.
     "us_futures": QuantopianUSFuturesCalendar,
     "24/7": AlwaysOpenCalendar,
@@ -165,7 +183,7 @@ _default_calendar_aliases = {
 default_calendar_names = sorted(_default_calendar_factories.keys())
 
 
-class ExchangeCalendarDispatcher(object):
+class ExchangeCalendarDispatcher:
     """
     A class for dispatching and caching exchange calendars.
 
@@ -187,7 +205,7 @@ class ExchangeCalendarDispatcher(object):
         self._calendar_factories = dict(calendar_factories)
         self._aliases = dict(aliases)
         # key: factory name, value: (calendar, dict of calendar kwargs)
-        self._factory_output_cache: dict(str, tuple(ExchangeCalendar, dict)) = {}
+        self._factory_output_cache: dict[str, tuple[ExchangeCalendar, dict]] = {}
 
     def _fabricate(self, name: str, **kwargs) -> ExchangeCalendar:
         """Fabricate calendar with `name` and `**kwargs`."""
@@ -210,8 +228,7 @@ class ExchangeCalendarDispatcher(object):
         calendar, calendar_kwargs = self._factory_output_cache.get(name, (None, None))
         if calendar is not None and calendar_kwargs == kwargs:
             return calendar
-        else:
-            return None
+        return None
 
     def get_calendar(
         self,
@@ -277,10 +294,11 @@ class ExchangeCalendarDispatcher(object):
         # will raise InvalidCalendarName if name not valid
         name = self.resolve_alias(name)
 
-        kwargs = {}
-        for k, v in zip(["start", "end", "side"], [start, end, side]):
-            if v is not None:
-                kwargs[k] = v
+        kwargs = {
+            k: v
+            for k, v in zip(["start", "end", "side"], [start, end, side], strict=True)
+            if v is not None
+        }
 
         if name in self._calendars:
             if kwargs:
@@ -289,8 +307,7 @@ class ExchangeCalendarDispatcher(object):
                     f" as a specific instance of class"
                     f" {self._calendars[name].__class__}, not as a calendar factory."
                 )
-            else:
-                return self._calendars[name]
+            return self._calendars[name]
 
         if kwargs.get("start"):
             kwargs["start"] = parse_date(kwargs["start"], "start", raise_oob=False)
